@@ -1,0 +1,29 @@
+
+ .Header {
+  margin-bottom: 60px;
+  border-bottom: 1px solid #eee;
+  direction: ltr !important;
+}
+
+.header-content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+}
+ .Header .menu{
+    display: flex;
+ }
+
+
+
+.Header .menu a {
+  margin-left: 12px;
+  text-decoration: none;
+  color: #000000;
+  display: flex;
+  align-items: center;
+}
+.Header .menu a.active {
+  color: #0000ff;
+}

@@ -1,0 +1,75 @@
+.Todo-container h1 {
+  font-size: 28px;
+  font-weight: bold;
+}
+.Todo-container p {
+  font-size: 15px;
+  color: rgb(61, 59, 59);
+}
+
+.Todo-container .contentEnter {
+  display: flex;
+  gap: 10px;
+}
+
+.Todo-container .contentEnter input {
+  flex: 10;
+  border-radius: 6px;
+  height: 35px;
+  padding: 13px;
+  outline-color: #1877f2;
+  border: 2px solid #eeeeee;
+}
+
+.Todo-container .contentEnter button {
+  flex: 5;
+  border-radius: 6px;
+  background-color: #0000ff;
+  border: #eee;
+  color: #eee;
+}
+
+.Todo-container .Todo-result li {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #eee;
+  padding: 8px;
+  border-radius: 8px;
+  margin: 12px 0;
+}
+.Todo-container .Todo-result li button {
+  width: 29px;
+  border-radius: 7px;
+  background-color: #ffffff;
+  border: 1px solid #ff0000;
+  color: #ff0000;
+}
+
+.Todo-container .Todo-result ul {
+  padding: 0;
+  margin: 0;
+}
+.add-btn-mobile {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+  display: none;
+  border-radius: 6px;
+  background-color: #0000ff;
+  border: #eee;
+  color: #eee;
+}
+
+@media (max-width: 360px) {
+  .add-btn-web {
+    display: none;
+  }
+}
+@media (max-width: 360px) {
+  .add-btn-mobile {
+    display: block;
+  }
+}

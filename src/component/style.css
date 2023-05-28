@@ -1,0 +1,49 @@
+
+
+.Todo {
+
+    margin-top: 9%;
+    padding-left: 35%;
+   
+    
+}
+.Todo p {
+    padding-bottom: 3%;
+}  
+
+.Todo input{
+
+    border-radius: 5px;
+    border: none;
+    border: 1px solid #eee;
+    padding-right: 10%;
+    
+}
+.Todo button{
+    background-color: rgb(104, 104, 253);
+    border: none;
+    border: 1px solid #eee;
+    border-radius: 5px;
+   margin-left: 10px;
+
+}
+.item{
+
+    background-color:#f1f1f1 ;
+   margin-right: 53%;
+   padding-top: 15px;
+   border-radius: 6px;
+   
+
+}
+ .item button{
+    margin-left: 83%;
+ }
+
+ 
+ hr{
+    margin-right: 53%;
+ }
+
+
+

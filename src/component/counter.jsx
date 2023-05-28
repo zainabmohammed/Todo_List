@@ -1,35 +1,22 @@
+import React, { useState } from "react";
 
-import React , {useState} from "react";
+function Counter() {
+  const [count, setCount] = useState(0);
 
-function Counter(){
-       
-   
-        const [count,setCount]=useState(0)
-     
+  function handeldecrement() {
+    setCount(count - 1);
+  }
+  function handelIncrement() {
+    setCount(count + 1);
+  }
 
-        function handeldecrement(){
-        
-          setCount(count-1)
-   
-        }
-        function handelIncrement(){
-        
-            setCount(count+1)
-     
-          }
-        
-        return (
+  return (
+    <div>
+      <button onClick={handeldecrement}>decrease</button>
+      <span>{count}</span>
+      <button onClick={handelIncrement}>increase</button>
+    </div>
+  );
+}
 
-            <div>
-                <button onClick={handeldecrement}>decrease</button>
-                <span>{count}</span>
-                <button onClick={handelIncrement}>increase</button>
-            </div>
-
-
-
-        );
-    }
-
- 
 export default Counter;

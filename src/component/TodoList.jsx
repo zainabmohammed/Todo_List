@@ -1,10 +1,16 @@
 import React, { useState } from "react";
+import './style.css';
 
 
 function TodoList (){
 
     const [newItem,setNewItem]=useState("");
-    const [items,setItems] =useState([]);
+    const [items,setItems] =useState([{
+        id:Math.floor(Math.random()*1000),
+        value:"test"
+
+
+    }]);
 
 // let mylist = [
 //     {
@@ -54,30 +60,32 @@ function deletItem(id){
 
     return(
 
+        <div className="container">
         <div className="Todo">
-            <h1>Todo List App</h1>
-            <input  type="text"placeholder="Add an item.."
+            <h3>Simple ToDo APP</h3>
+            <p>This todo app for test react.</p>
+            <input  type="text"placeholder="write text here.."
             value={newItem}
             onChange={e=>setNewItem(e.target.value)}
             
             />
-            <button onClick={()=>addItem()}>Add</button>
-<ul>
+            <button onClick={()=>addItem()}>primary</button>
+            <hr></hr>
+
     {items.map(item=>{
         return(
 
-            <li key={item.id}>{item.value}<button onClick={()=> deletItem(item.id)}>X</button></li>
+            < div className="item"key={item.id}>{item.value}<button onClick={()=> deletItem(item.id)}>X</button></div>
         )
 
     })}
         
     
-</ul>
 
 
 
         </div>
-
+        </div>
 
 
 
