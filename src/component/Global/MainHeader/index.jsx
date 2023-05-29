@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import "./headertodo.css";
+import React from "react";
+import "./style.css";
 import { Link } from "react-router-dom";
 import { BiHomeAlt, BiInfoCircle } from "react-icons/bi";
-import SvgTodo from "./SvgTodo";
 import { useLocation } from "react-router-dom";
-import { useStore } from "../Store";
-import trans from "../trans";
+import { useStore } from "../../../Store";
+import trans from "../../../trans";
+import AppLogo from "../SVG/Logo";
 
-function HeaderTodo() {
+function MainHeader() {
   let location = useLocation();
-  //   const [lang, setLang] = useState("en");
-  //   console.log(location);
+  // const [lang, setLang] = useState("en");
+  // console.log(location);
   const { lang, setLang } = useStore();
 
   return (
@@ -18,10 +18,8 @@ function HeaderTodo() {
       <div className="Todo-container">
         <div className="header-content">
           <div className="Logo">
-            <SvgTodo />
+            <AppLogo />
           </div>
-
-          {/* <h1 className="Logo">ToDo</h1> */}
           <div className="menu">
             <Link className={location?.pathname === "/" ? "active" : ""} to="/">
               <BiHomeAlt /> {trans[lang].nav_home}
@@ -32,9 +30,8 @@ function HeaderTodo() {
             >
               <BiInfoCircle /> {trans[lang].nav_about}
             </Link>
-
-            <a onClick={() => setLang(lang === "en" ? "ar" : "en")}>
-            {trans[lang].nav_arabic}
+            <a className="lang-btn" onClick={() => setLang(lang === "en" ? "ar" : "en")}>
+              {trans[lang].nav_arabic}
             </a>
           </div>
         </div>
@@ -43,4 +40,4 @@ function HeaderTodo() {
   );
 }
 
-export default HeaderTodo;
+export default MainHeader;

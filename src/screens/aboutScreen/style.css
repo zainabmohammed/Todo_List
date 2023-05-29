@@ -1,0 +1,15 @@
+.about-screen .svg-todo img {
+  width: 100%;
+  margin-top: 50px;
+}
+
+.about-screen .title h1 {
+  font-weight: bold;
+  font-size: 38px;
+  margin: 0;
+}
+
+.about-screen .title p {
+  font-size: 18px;
+  color: #666666;
+}

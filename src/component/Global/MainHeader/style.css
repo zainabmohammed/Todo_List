@@ -9,13 +9,11 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 50px;
+    height: 65px;
 }
  .Header .menu{
     display: flex;
  }
-
-
 
 .Header .menu a {
   margin-left: 12px;
@@ -24,6 +22,29 @@
   display: flex;
   align-items: center;
 }
+
+
+.ar-container .Header .menu a{
+   direction: rtl;
+}
+
+.Header .menu a svg{
+  margin: 0px 4px;
+}
+
+.Header a.lang-btn{
+  background-color: #eee;
+  padding: 4px 14px;
+  border-radius: 8px;
+  transition: .2s;
+  cursor: pointer;
+ }
+
+ .Header a.lang-btn:hover{
+  background-color: #0000ff;
+  color: #fff;
+ }
+
 .Header .menu a.active {
   color: #0000ff;
 }
