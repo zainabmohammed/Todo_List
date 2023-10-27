@@ -2,15 +2,55 @@ import swal from "sweetalert";
 import trans from "../../../trans";
 import { useHomeStore, useStore } from "../../../Store";
 import { BiTrash } from "react-icons/bi";
-import './style.css'
+import "./style.css";
+import { useEffect } from "react";
 
 const TodoList = () => {
   const { lang } = useStore();
   const { items, setItems } = useHomeStore();
 
+  useEffect(() => {
+    let storageValue = JSON.parse(localStorage.getItem("items"));
+    if (storageValue?.length !== 0) {
+      setItems(storageValue);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("items", JSON.stringify(items));
+  }, [items]);
+
+  // function deletItem(id) {
+  //   const newArray = items.filter((item) => item.id !== id);
+  //   setItems(newArray);
+  // }
+
+  const getTodolist = () => {
+    fetch("http://localhost:5000/todo")
+      .then((res) => res.json())
+      .then((datatable) => {
+        setItems(datatable);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   function deletItem(id) {
-    const newArray = items.filter((item) => item.id !== id);
-    setItems(newArray);
+    fetch("http://localhost:5000/todo/"+id, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title: setItems,
+      }),
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        getTodolist();
+      })
+      .catch((error) => console.log("error", error));
   }
 
   return (
@@ -19,7 +59,7 @@ const TodoList = () => {
         {items.map((item) => {
           return (
             <li key={item.id}>
-              <span>{item.value}</span>
+              <span>{item.title}</span>
               <button
                 onClick={() => {
                   swal({
@@ -41,7 +81,7 @@ const TodoList = () => {
                   });
                 }}
               >
-                <BiTrash/>
+                <BiTrash />
               </button>
             </li>
           );
@@ -54,4 +94,4 @@ const TodoList = () => {
   );
 };
 
-export default TodoList
+export default TodoList;

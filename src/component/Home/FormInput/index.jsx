@@ -1,10 +1,22 @@
 import { useHomeStore, useStore } from "../../../Store";
 import trans from "../../../trans";
 import "./style.css";
-
+import { useEffect, useState } from "react";
 const FormInput = () => {
   const { lang } = useStore();
   const { newItem, setNewItem, setItems, items } = useHomeStore();
+  const [loading, setLoading] = useState(false);
+
+  const getTodolist = () => {
+    fetch("http://localhost:5000/todo")
+      .then((res) => res.json())
+      .then((datatable) => {
+        setItems(datatable);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   function addItem() {
     if (!newItem) {
@@ -12,13 +24,32 @@ const FormInput = () => {
       return;
     }
 
-    const item = {
-      id: Math.floor(Math.random() * 1000),
-      value: newItem,
-    };
+    setLoading(true)
 
-    setItems([...items, item]);
-    setNewItem("");
+    fetch("http://localhost:5000/todo", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title: newItem,
+      }),
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        setNewItem("");
+        setLoading(false)
+        getTodolist();
+      })
+      .catch((error) => console.log("error", error));
+
+    // const item = {
+    //   id: Math.floor(Math.random() * 1000),
+    //   value: newItem,
+    // };
+
+    // setItems([...items, item]);
+    // setNewItem("");
   }
 
   return (
@@ -32,12 +63,13 @@ const FormInput = () => {
         />
 
         <button className="add-btn-web" onClick={() => addItem()}>
-          {trans[lang].nav_button}
+          {loading ? "loading..." : trans[lang].nav_button}
         </button>
       </div>
-      <button className="add-btn-mobile" onClick={() => addItem()}>
-        +Add New
-      </button>
+
+      {/* <button className="add-btn-mobile" onClick={() => addItem()}>
+       {!loading ? "loading..." : "+Add New"}
+      </button> */}
     </>
   );
 };
