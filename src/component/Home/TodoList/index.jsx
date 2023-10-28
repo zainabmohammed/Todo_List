@@ -25,6 +25,8 @@ const TodoList = () => {
   //   setItems(newArray);
   // }
 
+  
+ //#for get all items in list
   const getTodolist = () => {
     fetch("http://localhost:5000/todo")
       .then((res) => res.json())
@@ -35,7 +37,7 @@ const TodoList = () => {
         console.log(err);
       });
   };
-
+// delete items in todo list
   function deletItem(id) {
     fetch("http://localhost:5000/todo/"+id, {
       method: "DELETE",

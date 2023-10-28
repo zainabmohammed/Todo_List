@@ -2,11 +2,11 @@ import { useHomeStore, useStore } from "../../../Store";
 import trans from "../../../trans";
 import "./style.css";
 import { useEffect, useState } from "react";
-const FormInput = () => {
+  const FormInput = () => {
   const { lang } = useStore();
   const { newItem, setNewItem, setItems, items } = useHomeStore();
   const [loading, setLoading] = useState(false);
-
+  // # for get all items in todo list
   const getTodolist = () => {
     fetch("http://localhost:5000/todo")
       .then((res) => res.json())
@@ -18,13 +18,15 @@ const FormInput = () => {
       });
   };
 
+  //#alret when dont enter items appear
   function addItem() {
     if (!newItem) {
       alert("Enter New Item...");
       return;
     }
 
-    setLoading(true)
+    setLoading(true);
+    // #for add items in todo list
 
     fetch("http://localhost:5000/todo", {
       method: "POST",
@@ -38,7 +40,7 @@ const FormInput = () => {
       .then((response) => response.json())
       .then((result) => {
         setNewItem("");
-        setLoading(false)
+        setLoading(false);
         getTodolist();
       })
       .catch((error) => console.log("error", error));
